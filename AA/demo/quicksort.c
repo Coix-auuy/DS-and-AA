@@ -1,23 +1,24 @@
 #include <stdio.h>
 typedef int ElemType;
-// #define Swap(ElemType (*x), ElemType *y) ()
+
 void Swap(ElemType *x, ElemType *y)
 {
     ElemType t;
     t = *x;
     *x = *y;
     *y = t;
+    //异或交换用不了 还未找出原因
 }
-
+// 当所需排序数在5~20时插入排序更高效,这也可以避免数组小于3时出现的运行错误.
 void InsertionSort(ElemType A[], int N)
 {
-    int j, P;
+    int j, i;
 
     ElemType Tmp;
-    for (P = 1; P < N; P++)
+    for (i = 1; i < N; i++)
     {
-        Tmp = A[P];
-        for (j = P; j > 0 && A[j - 1] > Tmp; j--)
+        Tmp = A[i];
+        for (j = i; j > 0 && A[j - 1] > Tmp; j--)
             A[j] = A[j - 1];
         A[j] = Tmp;
     }
@@ -38,14 +39,14 @@ ElemType Median3(ElemType A[], int Left, int Right)
     return A[Right - 1];             //Return pivot
 }
 
-#define Cutoff (3) //Avoid error
+#define Cutoff (15) //Avoid error
 void Qsort(ElemType A[], int Left, int Right)
 {
-    int i, j;
-    ElemType Pivot;
 
     if (Left + Cutoff <= Right)
     {
+        int i, j;
+        ElemType Pivot;
         Pivot = Median3(A, Left, Right);
         i = Left;
         j = Right - 1;
@@ -71,15 +72,46 @@ void Qsort(ElemType A[], int Left, int Right)
         InsertionSort(A + Left, Right - Left + 1);
 }
 
-void Quicksort(ElemType A[], int N)
+void Quicksort(ElemType A[], long long int N)
+
 {
     Qsort(A, 0, N - 1);
 }
 
+ElemType A[1000000];
 int main()
 {
-    ElemType A[6] = {6, 3, 9, 2, 0, 7};
-    Quicksort(A, 6);
-    for (int i = 0; i < 6; i++)
-        printf("%d", A[i]);
+    int N;
+    scanf("%d", &N);
+    for (int i = 0; i < N; i++)
+        scanf("%d", &A[i]);
+
+    Quicksort(A, N);
+    for (int i = 0; i < N - 1; i++)
+        printf("%d ", A[i]);
+    printf("%d\n", A[N - 1]);
+    return 0;
 }
+// int main()
+// {
+//     int n;
+//     FILE *in = fopen("in.txt", "r");
+//     FILE *out = fopen("output.txt", "w");
+
+//     if (in == NULL || out == NULL)
+//     {
+//         return 0;
+//     }
+//     fscanf(in, "%d", &n);
+//     for (int i = 0; i < n; i++)
+//         fscanf(in, "%d", &A[i]);
+
+//     Quicksort(A, n);
+
+//     for (int i = 0; i < n - 1; i++)
+//         fprintf(out, "%d ", A[i]);
+//     fprintf(out, "%d\n", A[n - 1]);
+//     fclose(in);
+//     fclose(out);
+//     return 0;
+// }
