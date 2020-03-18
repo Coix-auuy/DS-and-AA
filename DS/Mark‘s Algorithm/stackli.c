@@ -1,21 +1,17 @@
-#include "stackli.h"
-#include "fatal.h"
 #include <stdlib.h>
-
+#include "fatal.h"
+#include <stackli.h>
 struct Node
 {
     ElementType Element;
     PtrToNode Next;
 };
 
-/* START: fig3_40.txt */
 int IsEmpty(Stack S)
 {
     return S->Next == NULL;
 }
-/* END */
 
-/* START: fig3_41.txt */
 Stack CreateStack(void)
 {
     Stack S;
@@ -23,7 +19,7 @@ Stack CreateStack(void)
     S = malloc(sizeof(struct Node));
     if (S == NULL)
         FatalError("Out of space!!!");
-    S->Next = NULL;
+    S->Next == NULL;
     MakeEmpty(S);
     return S;
 }
@@ -36,15 +32,7 @@ void MakeEmpty(Stack S)
         while (!IsEmpty(S))
             Pop(S);
 }
-/* END */
 
-void DisposeStack(Stack S)
-{
-    MakeEmpty(S);
-    free(S);
-}
-
-/* START: fig3_42.txt */
 void Push(ElementType X, Stack S)
 {
     PtrToNode TmpCell;
@@ -59,20 +47,15 @@ void Push(ElementType X, Stack S)
         S->Next = TmpCell;
     }
 }
-/* END */
 
-/* START: fig3_43.txt */
-ElementType
-Top(Stack S)
+ElementType Top(Stack S)
 {
     if (!IsEmpty(S))
         return S->Next->Element;
     Error("Empty stack");
-    return 0; /* Return value used to avoid warning */
+    return 0; //Return value used to avoid warning
 }
-/* END */
 
-/* START: fig3_44.txt */
 void Pop(Stack S)
 {
     PtrToNode FirstCell;
@@ -86,4 +69,9 @@ void Pop(Stack S)
         free(FirstCell);
     }
 }
-/* END */
+
+void DisposeStack(Stack S)
+{
+    MakeEmpty(S);
+    free(S);
+}
