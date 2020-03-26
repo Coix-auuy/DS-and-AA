@@ -63,10 +63,10 @@ double closestpair(point X[], point_m Y[], int l, int h)
         }
     }
     for (int i = 0; i < k; i++)
-        // j < i + 6 个人认为此条件可以去除，只要程序没有逻辑错误，k必定小于或等于6
-        for (int j = i + 1; j < k; j++)
+        //已按y排序，故最多只需检测i后6个位置与i的距离
+        for (int j = i + 1; j < k + 6 && j < k; j++)
         {
-            //纵向距离如果比d大，则直接跳过,因为y是排序的，所以之后的点必定也大于d
+            //纵向距离如果比d大，则直接跳过,因为y是有序的，所以之后的点必定也大于d
             if (tem[j].y - tem[i].y >= d)
                 break;
             d = min(d, dis(tem[i], tem[j]));
