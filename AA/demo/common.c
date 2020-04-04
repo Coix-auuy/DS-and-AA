@@ -1,5 +1,5 @@
 typedef int ElemType;
-//交换 测试
+//交换
 void swap(ElemType *x, ElemType *y)
 {
     ElemType t;
