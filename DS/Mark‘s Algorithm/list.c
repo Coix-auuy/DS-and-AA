@@ -1,13 +1,49 @@
-#include <list.h>
-#include <stdlib.h>
-#include <fatal.h>
+#include "list.h"
+#include "fatal.h"
 
 struct Node
 {
     ElementType Element;
     Position Next;
 };
-
+List FCreateList(ElementType Arr[], int Length)
+{
+    List L = malloc(sizeof(PtrToNode));
+    L->Next = NULL;
+    for (int i = 0; i < Length; i++)
+        Insert(Arr[i], L, L);
+    return L;
+}
+List RCreateList(ElementType Arr[], int Length)
+{
+    List L = malloc(sizeof(PtrToNode));
+    L->Next = NULL;
+    Position Rear = L;
+    for (int i = 0; i < Length; i++)
+    {
+        Position P = malloc(sizeof(Position));
+        P->Element = Arr[i];
+        P->Next = Rear->Next;
+        Rear->Next = P;
+        Rear = P;
+    }
+    return L;
+}
+void DisplayList(List L)
+{
+    Position P = L->Next;
+    if (P != NULL)
+    {
+        printf("%d", P->Element);
+        P = P->Next;
+        while (P != NULL)
+        {
+            printf("->%d", P->Element);
+            P = P->Next;
+        }
+        printf("\n");
+    }
+}
 // Return true if L is empty
 int IsEmpty(List L)
 {
@@ -60,7 +96,7 @@ Position FindPrevious(ElementType X, List L)
 
 // Insert (after legal position P)
 // Header implementation assumed
-//Parameter L is unused in this implementation
+// Parameter L is unused in this implementation
 void Insert(ElementType X, List L, Position P)
 {
     Position TmpCell = malloc(sizeof(struct Node));
@@ -103,4 +139,22 @@ Position Advance(Position P)
 ElementType Retrieve(Position P)
 {
     return P->Element;
+}
+//3.2
+void PrintLots(List L, List P)
+{
+    int Counter;
+    Position Lpos, Ppos;
+    Lpos = First(L);
+    Ppos = First(P);
+    Counter = 1;
+    while (Lpos != NULL && Ppos != NULL)
+    {
+        if (Ppos->Element == Counter++)
+        {
+            printf("%d ", Lpos->Element);
+            Ppos = Ppos->Next;
+        }
+        Lpos = Lpos->Next;
+    }
 }

@@ -1,6 +1,8 @@
 {
     "files.associations": {
+        "fatal.h": "c",
+        "queue.h": "c",
         "stdlib.h": "c",
-        "fatal.h": "c"
+        "list.h": "c"
     }
 }

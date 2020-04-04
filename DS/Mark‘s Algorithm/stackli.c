@@ -1,6 +1,6 @@
-#include <stdlib.h>
 #include "fatal.h"
-#include <stackli.h>
+#include "stackli.h"
+//如果.c中的函数也需要调用同个.c中的其它函数，那么这个.c往往会include同名的.h，这样就不需要为声明和调用顺序而发愁了
 struct Node
 {
     ElementType Element;
@@ -12,10 +12,9 @@ int IsEmpty(Stack S)
     return S->Next == NULL;
 }
 
-Stack CreateStack(void)
+Stack CreateStack(void) //使用哑元来区分
 {
     Stack S;
-
     S = malloc(sizeof(struct Node));
     if (S == NULL)
         FatalError("Out of space!!!");
