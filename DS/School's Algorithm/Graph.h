@@ -3,16 +3,16 @@
 #define INF -1
 #define MAXV 100
 typedef char InfoType;
-//ÁÚ½Ó¾ØÕó
+//ï¿½Ú½Ó¾ï¿½ï¿½ï¿½
 typedef struct
 {
-	int no; //¶¥µã±àºÅ
+	int no; //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	InfoType info;
-} VertexType; //¶¥µã
+} VertexType; //ï¿½ï¿½ï¿½ï¿½
 typedef struct
 {
 	int edges[MAXV][MAXV];
-	int n, e; //¶¥µãÊı£¬±ßÊı
+	int n, e; //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	VertexType vexs[MAXV];
 } MatGraph;
 
@@ -34,25 +34,25 @@ void DispMat(MatGraph &g)
 			if (g.edges[i][j] != INF)
 				printf("%4d", g.edges[i][j]);
 			else
-				printf("%4s", "¡Ş");
+				printf("%4s", "ï¿½ï¿½");
 		}
 		printf("\n");
 	}
 }
 
-//ÁÚ½Ó±í
+//ï¿½Ú½Ó±ï¿½
 typedef struct ANode
 {
-	int adjvex;			   //¸Ã±ßµÄÁÚ½Óµã±àºÅ
-	struct ANode *nextarc; //ÏÂÒ»Ìõ±ß
+	int adjvex;			   //ï¿½Ã±ßµï¿½ï¿½Ú½Óµï¿½ï¿½ï¿½
+	struct ANode *nextarc; //ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½
 	int weight;			   //È¨Öµ
-} ArcNode;				   //±ß½áµã
+} ArcNode;				   //ï¿½ß½ï¿½ï¿½
 typedef struct Vnode
 {
-	InfoType info;	 //¶¥µãĞÅÏ¢
-	int count;		   //¶¥µãÈë¶È
-	ArcNode *firstarc; //µÚÒ»Ìõ±ß
-} VNode;			   //Í·½áµã
+	InfoType info;	   //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
+	int count;		   //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	ArcNode *firstarc; //ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½
+} VNode;			   //Í·ï¿½ï¿½ï¿½
 typedef struct
 {
 	VNode adjlist[MAXV];
@@ -72,9 +72,9 @@ void CreateAdj(AdjGraph *&G, int A[MAXV][MAXV], int n, int e)
 			if (A[i][j] != 0 && A[i][j] != INF)
 			{
 				p = (ArcNode *)malloc(sizeof(ArcNode));
-				p->adjvex = j; //ÁÚ½Óµ½µÄµã
+				p->adjvex = j; //ï¿½Ú½Óµï¿½ï¿½Äµï¿½
 				p->weight = A[i][j];
-				//Í·²å
+				//Í·ï¿½ï¿½
 				p->nextarc = G->adjlist[i].firstarc;
 				G->adjlist[i].firstarc = p;
 			}
