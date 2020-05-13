@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "math.h": "c",
+        "bit": "c",
+        "*.tcc": "c",
+        "cmath": "c",
+        "complex": "c",
+        "random": "c"
+    }
+}

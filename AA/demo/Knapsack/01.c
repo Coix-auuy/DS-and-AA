@@ -41,10 +41,8 @@ int main()
     scanf("%d%d", &n, &pW); //物品数量，背包容量
     for (int i = 1; i <= n; i++)
         scanf("%d%d", &item[i].w, &item[i].v); //每件物品的重量以及价值
-    int r[10];
-    r[0] = 0;
-    for(int i = 1; i <= pW;i++)
-        r[i] = -1000;
+    // 一维数组
+    int r[20] = {0};
     for (int i = 1; i <= n; i++)
     {
         for (int j = pW; j >= item[i].w; j--)
