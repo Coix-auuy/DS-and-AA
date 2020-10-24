@@ -1,11 +1,11 @@
 #include <stdio.h>
-void power(int a[], int n)
+void power(long long int a[], int n)
 {
     if (n == 0)
         return;
     if (n == 1)
         return;
-    int temp[4];
+    long long int temp[4];
     if (n == 2)
     {
         temp[0] = a[0] * 1 + a[1] * 1;
@@ -42,9 +42,20 @@ void power(int a[], int n)
 int main()
 {
     int n;
-    scanf("%d", &n);
-    int a[4] = {1, 1, 1, 0};
-    power(a, n);
-    printf("%d", a[1]);
+    while (1)
+    {
+        scanf("%d", &n);
+        if (n == -1)
+            break;
+        if(n == 0)
+        {
+            printf("0\n");
+            continue;
+        }
+            
+        long long int a[4] = {1, 1, 1, 0};
+        power(a, n);
+        printf("%lld\n", a[1]);
+    }
     return 0;
 }

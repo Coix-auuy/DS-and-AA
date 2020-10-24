@@ -1,0 +1,4 @@
+D:/gb_git/DS-and-AA/PDS/cmake-build-debug/CMakeFiles/BinaryTree.dir
+D:/gb_git/DS-and-AA/PDS/cmake-build-debug/CMakeFiles/KMP.dir
+D:/gb_git/DS-and-AA/PDS/cmake-build-debug/CMakeFiles/edit_cache.dir
+D:/gb_git/DS-and-AA/PDS/cmake-build-debug/CMakeFiles/rebuild_cache.dir

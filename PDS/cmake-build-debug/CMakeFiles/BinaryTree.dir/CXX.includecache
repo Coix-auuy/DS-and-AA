@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+D:/gb_git/DS-and-AA/PDS/BinaryTree.cpp
+const.cpp
+D:/gb_git/DS-and-AA/PDS/const.cpp
+stack
+-
+queue
+-
+
+D:/gb_git/DS-and-AA/PDS/const.cpp
+iostream
+-
+cstring
+-
+

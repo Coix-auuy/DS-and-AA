@@ -30,7 +30,7 @@ void warshall(int (*a)[SIZE])
 int main()
 {
     int n = 4;
-    int a[SIZE][SIZE] = {{0, 0, 1, 0}, {1, 0, 0, 1}, {0, 0, 0, 0}, {0, 1, 0, 0}};
+    int a[SIZE][SIZE] = {{0, 1, 0, 0}, {0, 0, 0, 1}, {0, 0, 0, 0}, {1, 0, 1, 0}};
     warshall(a);
     return 0;
 }

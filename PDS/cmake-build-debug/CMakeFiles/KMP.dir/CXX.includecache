@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+D:/gb_git/DS-and-AA/PDS/KMP.cpp
+const.cpp
+D:/gb_git/DS-and-AA/PDS/const.cpp
+
+D:/gb_git/DS-and-AA/PDS/const.cpp
+iostream
+-
+cstring
+-
+

@@ -1,0 +1,3 @@
+"C:\Program Files\JetBrains\CLion 2021.1.3\bin\cmake\win\bin\cmake.exe" -E rm -f CMakeFiles\KMP.dir/objects.a
+C:\MinGW\bin\ar.exe cr CMakeFiles\KMP.dir/objects.a @CMakeFiles\KMP.dir\objects1.rsp
+C:\MinGW\bin\g++.exe -g -Wl,--whole-archive CMakeFiles\KMP.dir/objects.a -Wl,--no-whole-archive -o KMP.exe -Wl,--out-implib,libKMP.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\KMP.dir\linklibs.rsp
