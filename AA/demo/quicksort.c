@@ -7,8 +7,6 @@ void Swap(ElemType *x, ElemType *y)
     t = *x;
     *x = *y;
     *y = t;
-    // (*x) ^= (*y) ^= (*x) = (*y);
-    //异或交换用不了 还未找出原因
 }
 // 当所需排序数在5~20时插入排序更高效,这也可以避免数组小于3时出现的运行错误.
 void InsertionSort(ElemType A[], int N)
@@ -73,7 +71,7 @@ void Qsort(ElemType A[], int Left, int Right)
         InsertionSort(A + Left, Right - Left + 1);
 }
 
-void Quicksort(ElemType A[], long long int N)
+void Quicksort(ElemType A[], int N)
 
 {
     Qsort(A, 0, N - 1);

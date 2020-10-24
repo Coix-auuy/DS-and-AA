@@ -4,13 +4,55 @@
 #define MaxSize 100
 #define MAX(x, y) ((x) > (y) ? (x) : (y))
 typedef char ElemType;
+//³õÊ¼»¯Ê÷£¨º¢×ÓÐÖµÜ±íÊ¾·¨£©
 typedef struct node
 {
 	ElemType data;
 	struct node *lchild;
 	struct node *rchild;
 } BTNode; //binary tree
-
+//º¢×ÓÐÖµÜ±íÊ¾·¨½«Ò»°ãÊ÷×ª»»Îª¶þ²æÊ÷
+void change(BTNode *t)
+{
+	//½¨Ê÷Ê±£¬Ê×ÏÈÊäÈë¸ùÖµ£¬½Ó×ÅÔÙÊäÈëÆäËùÓÐº¢×ÓµÄÖµ£¬ÒÔ0½áÊø
+	ElemType x;
+	//¿ªÊ¼ÊäÈëµÚÒ»¸öº¢×Ó
+	getchar();
+	scanf("%c", &x);
+	if (x != '0')
+	{
+		t->lchild = (BTNode *)malloc(sizeof(BTNode));
+		t->lchild->data = x;
+		t->lchild->lchild = t->lchild->rchild = NULL;
+	}
+	else
+	{
+		//¸ù½ÚµãÃ»ÓÐº¢×ÓÖ±½Ó·µ»Ø
+		t->lchild =  NULL;
+		return;
+	}
+	//ÊäÈëµÚÒ»¸öº¢×ÓµÄÐÖµÜ
+	BTNode *temp = t->lchild;
+	getchar();
+	scanf("%c", &x);
+	while (x != '0')
+	{
+		temp->rchild = (BTNode *)malloc(sizeof(BTNode));
+		temp->rchild->data = x;
+		temp = temp->rchild;
+		temp->lchild = temp->rchild = NULL;
+		getchar();
+		scanf("%c",&x);
+	}
+	//µÝ¹éÃ¿Ò»¸öº¢×Ó×ÓÊ÷
+	temp = t->lchild;
+	while (temp)
+	{
+		change(temp);
+		temp = temp->rchild;
+	}
+}
+// ¸ù¾ÝÀ¨ºÅ±íÊ¾·¨½¨Á¢¶þ²æÊ÷
 void CreateBTree(BTNode *&b, char str[])
 {
 	BTNode *st[MaxSize];
@@ -49,7 +91,7 @@ void CreateBTree(BTNode *&b, char str[])
 		}
 	}
 }
-
+// É¾³ý¶þ²æÊ÷
 void DestroyBTree(BTNode *&b)
 {
 	if (b != NULL)
@@ -59,7 +101,7 @@ void DestroyBTree(BTNode *&b)
 		free(b);
 	}
 }
-
+// ²éÕÒ½Úµã
 BTNode *FindNode(BTNode *b, ElemType x)
 {
 	BTNode *p;
@@ -72,7 +114,7 @@ BTNode *FindNode(BTNode *b, ElemType x)
 		return p;
 	return FindNode(b->rchild, x);
 }
-
+// Ê÷¸ß
 int BTHeight(BTNode *b)
 {
 	int lchild, rchild;
@@ -82,7 +124,7 @@ int BTHeight(BTNode *b)
 	rchild = BTHeight(b->rchild);
 	return MAX(lchild, rchild) + 1;
 }
-
+// ÒÔÀ¨ºÅ±í´ïÊ½µÄ·½Ê½Êä³ö¶þ²æÊ÷
 void DispBTree(BTNode *b)
 {
 	if (b != NULL)
@@ -99,7 +141,7 @@ void DispBTree(BTNode *b)
 		}
 	}
 }
-
+// ÏÈÐòµÝ¹é
 void PreOrder(BTNode *b)
 {
 	if (b != NULL)
@@ -108,8 +150,9 @@ void PreOrder(BTNode *b)
 		PreOrder(b->lchild);
 		PreOrder(b->rchild);
 	}
+	return;
 }
-
+// ÖÐÐòµÝ¹é
 void InOrder(BTNode *b)
 {
 	if (b != NULL)
@@ -119,7 +162,7 @@ void InOrder(BTNode *b)
 		PreOrder(b->rchild);
 	}
 }
-
+// ºóÐòµÝ¹é
 void PostOrder(BTNode *b)
 {
 	if (b != NULL)
@@ -129,7 +172,7 @@ void PostOrder(BTNode *b)
 		printf("%c", b->data);
 	}
 }
-
+// ÏÈÐò·ÇµÝ¹é
 void PreOrderSt(BTNode *b)
 {
 	BTNode *St[MaxSize], *p;
@@ -157,7 +200,7 @@ void PreOrderSt(BTNode *b)
 		printf("\n");
 	}
 }
-
+// ÖÐÐò·ÇµÝ¹é
 void InOrderSt(BTNode *b)
 {
 	BTNode *St[MaxSize], *p;
@@ -184,7 +227,7 @@ void InOrderSt(BTNode *b)
 		printf("\n");
 	}
 }
-
+// ºóÐò·ÇµÝ¹é
 void PostOrderSt(BTNode *b)
 {
 	BTNode *St[MaxSize];
@@ -222,7 +265,7 @@ void PostOrderSt(BTNode *b)
 		printf("\n");
 	}
 }
-
+// ²ã´Î±éÀú
 void TravLevel(BTNode *b)
 {
 	BTNode *Qu[MaxSize];
@@ -252,7 +295,7 @@ void TravLevel(BTNode *b)
 	printf("\n");
 }
 
-// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½ï¿½ï¿½ï¿½
+// ½ÚµãÊý
 int Nodes(BTNode *b)
 {
 	int num1, num2;
@@ -268,7 +311,7 @@ int Nodes(BTNode *b)
 	}
 }
 
-// Ò¶ï¿½Ó½Úµï¿½ï¿½ï¿½
+// Ò¶×Ó½ÚµãÊý
 int LeafNodes(BTNode *b)
 {
 	int num1, num2;
@@ -283,6 +326,7 @@ int LeafNodes(BTNode *b)
 		return num1 + num2;
 	}
 }
+// Ä³Ò»½ÚµãËùÊô²ã
 int Level(BTNode *b, ElemType x, int h)
 {
 	int l;
@@ -300,7 +344,7 @@ int Level(BTNode *b, ElemType x, int h)
 	}
 }
 
-//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½bï¿½Ä¿ï¿½ï¿½ï¿½
+// Ê÷¿í
 int BTWidth(BTNode *b)
 {
 	struct

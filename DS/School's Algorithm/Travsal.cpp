@@ -1,4 +1,4 @@
-#include "Graph.h"
+#include "Graph.c"
 int visited[MAXV];
 void DFS(AdjGraph *G, int v)
 {

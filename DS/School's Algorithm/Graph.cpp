@@ -46,13 +46,13 @@ typedef struct ANode
 	int adjvex;			   //�ñߵ��ڽӵ���
 	struct ANode *nextarc; //��һ����
 	int weight;			   //Ȩֵ
-} ArcNode;				   //�߽��
+} ArcNode;				   //�߽��?
 typedef struct Vnode
 {
 	InfoType info;	   //������Ϣ
-	int count;		   //�������
+	int count;		   //�������?
 	ArcNode *firstarc; //��һ����
-} VNode;			   //ͷ���
+} VNode;			   //ͷ���?
 typedef struct
 {
 	VNode adjlist[MAXV];
